@@ -1,0 +1,21 @@
+{
+  "name": "testproject",
+  "version": "1.0.0",
+  "scripts": {
+    "test-polindrome": "node 1_1_Polyndrome/test.mjs",
+    "test-fizzBuzz": "node 1_2_FizzBuzz/test.mjs",
+    "test-chunkArray": "node 1_3_ChunkArray/test.mjs",
+    "test-dom": "http-server -o 2_ManipulationDOM -c-1",
+    "test-async-js": "http-server -o 3_AsyncJS -c-1",
+    "test-calculator": "node 4_1_Calculator/calculator.mjs",
+    "test-library": "node 4_2_Library/library.mjs",
+    "test-debounce": "node 5_1_Debounce/test.mjs",
+    "test-deepClone": "node 5_2_DeepClone/test.mjs"
+  },
+  "author": "Petr_Elshin",
+  "license": "ISC",
+  "description": "Tests",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

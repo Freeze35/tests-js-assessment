@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="toDoList">Список задач</h1>
+
+    <div class="add-container">
+        <input type="text" id="taskInput" class="taskInput" placeholder="Введите название задачи"/>
+        <button id="addTaskBtn" class="addTaskBtn">Добавить задачу</button>
+    </div>
+
+    <ul id="taskList"></ul>
+    <div class="add-container">
+        <button id="filterAllBtn" class="filterAllBtn">Показать все</button>
+        <button id="filterCompletedBtn" class="filterCompletedBtn">
+            <span class="checkmark"></span> Показать завершенные
+        </button>
+    </div>
+
+</div>
+<script src="./test.mjs"></script>
+</body>
+</html>

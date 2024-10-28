@@ -1,0 +1,171 @@
+/* styles.css */
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: rgba(40, 167, 69, 0.25);
+    margin: 0;
+    padding: 20px;
+}
+
+.toDoList {
+    color: #28a745;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ebf1f1;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-container {
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.taskInput {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.addTaskBtn {
+    flex: 0 0 25%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+.filterAllBtn {
+    width: auto;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filterCompletedBtn.active {
+    width: auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e75bf;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+input {
+    padding: 10px;
+    width: 70%;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    color: #28a745;
+    opacity: 1;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+.delete-btn-container{
+    display: flex;                /* Используем flexbox для размещения кнопки */
+    align-items: center;         /* Выравнивание по вертикали */
+    height: 100%;                /* Занимаем всю высоту li */
+    margin-left: auto;           /* Сдвигаем в правую часть */
+    padding: 10px;
+}
+
+.delete-btn {
+    background-color: #ca3838;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    color: rgba(33, 136, 56, 0.8);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 20px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+li.completed {
+    color: gray;
+}
+
+li.completed::before {
+    content: '✔';
+    margin-right: 10px;
+    color: #4e75bf;
+    font-size: 16px;
+}
+
+.filterCompletedBtn {
+    display: flex; /* Используем flex для выравнивания */
+    align-items: center; /* Выравниваем по центру по вертикали */
+    background-color: #28a745; /* Зеленый цвет */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем границу */
+    padding: 10px 20px; /* Отступы */
+    cursor: pointer; /* Курсор-указатель */
+}
+
+.checkmark {
+    display: inline-block; /* Чтобы корректно отображать */
+    width: 10px; /* Ширина галочки */
+    height: 10px; /* Высота галочки */
+    margin-right: 10px; /* Отступ справа */
+    background-color: transparent; /* Цвет фона по умолчанию */
+    border: 2px solid white; /* Граница галочки */
+    border-radius: 50%; /* Закругленные углы для круга */
+    transition: background-color 0.25s; /* Плавный переход цвета */
+}
+
+.filterCompletedBtn.active .checkmark {
+    background-color: white; /* Цвет фона активной галочки */
+}
+
+/* Убедитесь, что текст прилипает к галочке */
+li span {
+    margin-left: 10px; /* Отступ между галочкой и текстом */
+    flex: 1; /* Позволяем тексту занимать оставшееся пространство */
+}
+
+.not_hidden {
+    display: none; /* Скрывает элементы с этим классом */
+}
+
+.hidden {
+    display: none; /* Скрывает элементы с этим классом */
+}
