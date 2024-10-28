@@ -48,70 +48,63 @@ function displayCurrentImage() {
     const user = users[currentIndex];
 
     if (user) {
-        // Создаем заполнитель с фиксированной высотой
-        const placeholder = document.createElement('div');
-        placeholder.className = 'loading-placeholder';
-        placeholder.textContent = 'Загрузка...';
+        // Создаем или находим контейнер для информации о пользователе
+        let userInfoContainer = document.querySelector('.user-info-container');
+        if (!userInfoContainer) {
+            userInfoContainer = document.createElement('div');
+            userInfoContainer.className = 'user-info-container';
 
-        // Очищаем контейнер перед загрузкой нового изображения
-        carouselContainer.innerHTML = ''; // Удаляем старое содержимое
-        // Добавляем заполнитель в контейнер
-        carouselContainer.appendChild(placeholder);
-
-        // Создаем изображение
-        const img = document.createElement('img');
-        img.src = user.profilePicture.medium;
-        // Задаём систему изображеняи под экран
-        img.srcset = `${user.profilePicture.thumbnail} 150w, ${user.profilePicture.medium} 300w, ${user.profilePicture.large} 600w`;
-        img.sizes = '(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px';
-        img.src = user.profilePicture.medium; // Добавляем основной src на случай, если браузер не поддерживает srcset
-        //Добавляем систему отображения
-        img.loading = 'lazy';
-        img.alt = user.name;
-
-        // Скрываем изображение до полной загрузки
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease'; // Добавляем плавный переход для появления
-
-        // Устанавливаем обработчик события загрузки
-        img.onload = () => {
-            // Очищаем контейнер, удаляя заполнитель
-            carouselContainer.innerHTML = ''; // Очищаем контейнер
-            carouselContainer.appendChild(img); // Добавляем изображение
-
-            // Удаляем старые элементы имени и email, если они существуют
-            const userInfoContainer = document.querySelector('.user-info-container');
-            if (userInfoContainer) {
-                userInfoContainer.remove(); // Удаляем контейнер с информацией
-            }
-
-            // Создаем новый контейнер для информации о пользователе
-            const newUserInfoContainer = document.createElement('div');
-            newUserInfoContainer.className = 'user-info-container'; // Создаем контейнер для информации о пользователе
-
-            // Создаем элементы для отображения имени и email
             const nameElement = document.createElement('p');
-            nameElement.className = 'user-name'; // Добавляем класс для идентификации
-            nameElement.innerHTML = `<strong class="name">Имя:</strong> ${user.name}`;
+            nameElement.className = 'user-name';
+            nameElement.innerHTML = `<strong class="name">Имя:</strong> Загрузка...`;
 
             const emailElement = document.createElement('p');
-            emailElement.className = 'user-email'; // Добавляем класс для идентификации
-            emailElement.innerHTML = `<strong class="email">Email:</strong> ${user.email}`;
+            emailElement.className = 'user-email';
+            emailElement.innerHTML = `<strong class="email">Email:</strong> Загрузка...`;
 
-            // Добавляем элементы в новый контейнер
-            newUserInfoContainer.appendChild(nameElement);
-            newUserInfoContainer.appendChild(emailElement);
+            userInfoContainer.appendChild(nameElement);
+            userInfoContainer.appendChild(emailElement);
 
-            // Добавляем новый контейнер над кнопками
             const buttonsContainer = document.querySelector('.carousel-buttons');
-            buttonsContainer.insertAdjacentElement('beforebegin', newUserInfoContainer);
+            buttonsContainer.insertAdjacentElement('beforebegin', userInfoContainer);
+        }
 
-            // Плавно показываем изображение
-            img.style.opacity = '1'; // Показываем изображение
-        };
+        // Обновляем текст на "Загрузка..." сразу
+        userInfoContainer.querySelector('.user-name').innerHTML = `<strong class="name">Имя:</strong> Загрузка...`;
+        userInfoContainer.querySelector('.user-email').innerHTML = `<strong class="email">Email:</strong> Загрузка...`;
 
-        // Устанавливаем изображение для загрузки
-        carouselContainer.appendChild(img); // Добавляем изображение в контейнер сразу после создания
+        // Очищаем контейнер карусели и добавляем заполнитель
+        carouselContainer.innerHTML = '';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'loading-placeholder';
+        placeholder.innerText = 'Загрузка...';
+        carouselContainer.appendChild(placeholder);
+
+        // Используем setTimeout для отложенной загрузки изображения и обновления данных
+        setTimeout(() => {
+            const img = document.createElement('img');
+            img.src = user.profilePicture.large;
+            img.loading = 'lazy';
+            img.alt = user.name;
+            img.style.opacity = '0';
+
+            img.onload = () => {
+                placeholder.style.display = 'none';
+                img.style.opacity = '1';
+
+                // Обновляем имя и email после полной загрузки
+                userInfoContainer.querySelector('.user-name').innerHTML = `<strong class="name">Имя:</strong> ${user.name}`;
+                userInfoContainer.querySelector('.user-email').innerHTML = `<strong class="email">Email:</strong> ${user.email}`;
+            };
+
+            // Оборачиваем изображение и добавляем его в карусель
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.appendChild(img);
+            imageContainer.appendChild(placeholder);
+
+            carouselContainer.appendChild(imageContainer);
+        }, 0); // Отложенная загрузка
     }
 }
 
