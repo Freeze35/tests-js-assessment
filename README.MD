@@ -15,20 +15,28 @@
 
 [1.1 Polyndrome](#11-проверка-на-палиндром)  
 `npm run test-polindrome`  
+
 [1.2 FizzBuzz](#12-fizzbuzz)   
 `npm run test-fizzBuzz`  
+
 [1.3 ChunkArray](#13-разбиение-массива-на-части)  
 `npm run test-chunkArray`  
+
 [2.0 ManipulationDOM](#задание-2-манипуляции-с-dom)  
 `npm run test-dom`  
+
 [3.0 AsyncJS](#задание-3-асинхронный-javascript)  
 `npm run test-async-js`    
+
 [4.1 Calculator](#41-реализация-простого-калькулятора)  
 `npm run test-calculator`    
+
 [4.2 Library](#42-система-управления-библиотекой)  
 `npm run test-library`  
+
 [5.1 Debounce](#51-функция-debounce-)  
 `npm run test-debounce`  
+
 [5.2 DeepClone](#52-глубокое-клонирование-объекта-)  
 `npm run test-deepClone`
 
