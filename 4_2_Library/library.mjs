@@ -128,7 +128,6 @@ async function main() {
 // Запускаем библиотеку
 main().then(library =>
 {
-
     // Запускаем библиотеку
     startLibrary(library);
 });

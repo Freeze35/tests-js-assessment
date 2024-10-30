@@ -62,17 +62,6 @@ const objFunc = {
     }
 };
 
-const objErr = {
-    name: 'John',
-    greet() {
-        console.log(`Hello, my name is ${this.name}`);
-    },
-    address: {
-        city: 'New York',
-        country: 'USA'
-    }
-};
-
 //Проведет тест проверки глубокго клонирования объекта с заменой
 cloneObject(original)
 
